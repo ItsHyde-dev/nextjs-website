@@ -1,6 +1,3 @@
-import * as React from "react"
-
-import { Button } from "@/components/ui/button"
 import {
   Card,
   CardContent,
@@ -12,54 +9,78 @@ import {
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select"
+  Tabs,
+  TabsContent,
+  TabsList,
+  TabsTrigger,
+} from "@/components/ui/tabs"
 import LoginButton from "./login-button"
 import SignupButton from "./signup-button"
 
 export function CardWithForm() {
   return (
-    <Card className="w-[350px]">
-      <CardHeader>
-        <CardTitle>Welcome to the website</CardTitle>
-        <CardDescription>Let's get started.</CardDescription>
-      </CardHeader>
-      <CardContent>
-        <form>
-          <div className="grid w-full items-center gap-4">
-            <div className="flex flex-col space-y-1.5">
-              <Label htmlFor="name">Username</Label>
-              <Input id="name" placeholder="Enter your username" />
+    <Tabs defaultValue="login" className="w-2/5">
+      <TabsList className="grid w-full grid-cols-2">
+        <TabsTrigger value="login">Login</TabsTrigger>
+        <TabsTrigger value="signup">Signup</TabsTrigger>
+      </TabsList>
+      <TabsContent value="login">
+        <Card className="flex flex-col justify-center items-center">
+          <CardHeader className="flex flex-col items-center">
+            <CardTitle>Login</CardTitle>
+            <CardDescription>
+              Log in to your account.
+            </CardDescription>
+          </CardHeader>
+          <CardContent className="space-y-2 w-3/4">
+            <div className="space-y-1">
+              <Label htmlFor="username" className="pl-3">Username</Label>
+              <Input id="username" placeholder="Username" />
             </div>
-            <div className="flex flex-col space-y-1.5">
-              <Label htmlFor="password">Password</Label>
-              <Input id="password" placeholder="Enter your password" type="password" />
+            <div className="space-y-1">
+              <Label htmlFor="password" className="pl-3">Password</Label>
+              <Input id="password" type="password" placeholder="Password" />
             </div>
-            <div className="flex flex-col space-y-1.5">
-              <Label htmlFor="role">Role</Label>
-              <Select>
-                <SelectTrigger id="role">
-                  <SelectValue placeholder="Select Role" />
-                </SelectTrigger>
-                <SelectContent position="popper">
-                  <SelectItem value="admin">Admin</SelectItem>
-                  <SelectItem value="employee">Employee</SelectItem>
-                  <SelectItem value="guest">Guest</SelectItem>
-                </SelectContent>
-              </Select>
+          </CardContent>
+          <CardFooter className="flex justify-center">
+            <LoginButton />
+          </CardFooter>
+        </Card>
+      </TabsContent>
+      <TabsContent value="signup">
+        <Card className="flex flex-col justify-center items-center">
+          <CardHeader className="flex flex-col items-center">
+            <CardTitle>Signup</CardTitle>
+            <CardDescription>
+              Sign up for an account.
+            </CardDescription>
+          </CardHeader>
+          <CardContent className="space-y-2">
+            <div className="flex flex-row space-x-2">
+              <div className="space-y-1">
+                <Label htmlFor="firstname" className="pl-3">First name</Label>
+                <Input id="firstname" placeholder="First name" />
+              </div>
+              <div className="space-y-1">
+                <Label htmlFor="lastname" className="pl-3">Last name</Label>
+                <Input id="lastname" placeholder="Last name" />
+              </div>
             </div>
-          </div>
-        </form>
-      </CardContent>
-      <CardFooter className="flex gap-4 justify-center">
-        <LoginButton />
-        <SignupButton />
-      </CardFooter>
-    </Card>
+            <div className="space-y-1">
+              <Label htmlFor="username" className="pl-3">Username</Label>
+              <Input id="username" placeholder="Username" />
+            </div>
+            <div className="space-y-1">
+              <Label htmlFor="password" className="pl-3">Enter your password</Label>
+              <Input id="password" placeholder="Password" type="password" />
+            </div>
+          </CardContent>
+          <CardFooter className="flex justify-center">
+            <SignupButton />
+          </CardFooter>
+        </Card>
+      </TabsContent>
+    </Tabs>
   )
 }
 

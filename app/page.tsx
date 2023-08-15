@@ -1,9 +1,16 @@
-import { CardWithForm } from "@/components/card-with-form";
+"use client"
 
-export default function Home() {
-  return (
-    <div className="flex items-center justify-center h-screen">
-      <CardWithForm />
-    </div>
-  )
+import { redirect } from "next/navigation";
+import { useEffect } from "react";
+
+export default function Root() {
+  useEffect(() => {
+    const isLoggedIn = !!localStorage.getItem("isLoggedIn");
+
+    if (!isLoggedIn) {
+      redirect("/auth");
+    }
+
+    redirect("/home");
+  }, []);
 }

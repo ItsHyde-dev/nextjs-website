@@ -1,0 +1,8 @@
+.backdrop-image {
+  background-image: url("../../public/background.jpg");
+  background-size: cover;
+}
+
+/* body { */
+/* background: transparent; */
+/* } */

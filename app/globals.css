@@ -59,11 +59,3 @@
   }
 }
 
-html {
-  background-image: url("../public/background.jpg");
-  background-size: cover;
-}
-
-body {
-  background: transparent;
-}
